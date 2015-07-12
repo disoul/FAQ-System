@@ -6,13 +6,6 @@ class User(models.Model):
     email = models.EmailField(unique=True)
     password = models.CharField(max_length=30)
 
-# Answer (content,user,date)
-class Answer(models.Model):
-    user = models.ForeignKey(User)
-    question = models.ForeignKey(Question)
-    date = models.DateField()
-
-
 # Question (title,user,date)
 class Question(models.Model):
     user = models.ForeignKey(User)
@@ -20,3 +13,8 @@ class Question(models.Model):
     content = models.CharField(max_length=200)
     date = models.DateField()
 
+# Answer (content,user,date)
+class Answer(models.Model):
+    user = models.ForeignKey(User)
+    question = models.ForeignKey(Question)
+    date = models.DateField()
