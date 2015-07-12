@@ -1,0 +1,36 @@
+.dialog {
+	position: fixed;
+	margin: auto;
+	height: 700px;
+	background-color: black;
+	width:500px;
+	top: 200px;
+	left: calc((100% - 500px) / 2);
+	display: flex;
+	flex-direction: colum;
+	.title {
+		width: 100%;
+		height: 50px;
+		font-size: 1.5em;
+		color: white;
+		background-color: $indigo-500;
+		position: relative;
+		p {
+			height: 50px;
+			line-height: 50px;
+			margin-left: 20px;
+			display:inline-block;
+		}
+		.exit {
+			display: inline-block;
+			position: absolute;
+			right: 20px;
+			line-height: 50px;
+			height: 50px;
+			cursor: pointer;
+			&:hover {
+				color: $indigo-200;
+			}
+		}
+	}
+}
