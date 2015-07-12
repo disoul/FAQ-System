@@ -1,1 +1,42 @@
-<p>HelloWorld</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	{% block staticblock %}
+	{% endblock %}
+	{% block title %}
+	<title>CoderUnionFAQ</title>
+	{% endblock %}
+</head>
+<body>
+	<div class="page-warp">
+		<div class="navigation">
+			<div class="logo">
+				{% load staticfiles %}
+				<img src="{% static "image/faq_logo.png" %}" alt="CoderUnionFAQ">
+			</div>
+			<div class="tool">
+				<div class="ask"><p>Ask!</p></div>
+			</div>
+			<div class="user">
+				<div class="sign"><p>Sign in</p></div>
+				<div class="icon"></div>
+			</div>
+		</div>
+		{% block main-content %}
+		<div class="main-content"></div>
+		{% endblock %}
+	</div>
+	<div class="dialog" id="sign">
+		<div class="title">
+			<p>登录</p>
+			<div class="exit">
+				<i class="fa fa-times"></i>
+			</div>
+		</div>
+		<div class="content"></div>
+		<div class="control"></div>
+	</div>
+	<div class="footer"></div>
+</body>
+</html>

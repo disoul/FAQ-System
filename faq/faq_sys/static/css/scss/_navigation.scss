@@ -1,0 +1,71 @@
+$navi_height: 100px;
+.navigation {
+	width: 100%;
+	height: $navi_height;
+	background-color: $indigo-300;
+	display: flex;
+	justify-content: center;
+	position: relative;
+	.logo {
+		img {
+			height: $navi_height;
+		}
+	}
+	.tool {
+		.ask {
+			height: 100%;
+			width: 100px;
+			margin-left: 30px;
+			cursor: pointer;
+			p {
+				font-size: 3em;
+				height: $navi_height;
+				line-height: $navi_height;
+				text-align: center;
+				color: white;
+			}
+			&:hover {
+				p {
+					font-weight: bold;
+				}
+			}
+		}
+	}
+}
+
+.user {
+	height: 100%;
+	width: $navi_height+150px;
+	position: absolute;
+	right: 0;
+	margin-right: 30px;
+	.sign {
+		width: 150px;
+		height: $navi_height;
+		cursor: pointer;
+		p {
+			color: white;
+			font-size: 2em;
+			height: $navi_height;
+			line-height: $navi_height;
+			text-align: center;
+		}
+		&:hover {
+			p {
+				font-weight: bold;
+			}
+		}
+		
+	}
+	.icon {
+		height: 80px;
+		width: 80px;
+		border-radius: 40px;
+		border: 1px solid black;
+		background-color: black;
+		margin-top: ($navi_height - 80px) / 2;
+		position: absolute;
+		top: 0;
+		right: 0;
+	}
+}
