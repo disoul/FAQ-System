@@ -13,10 +13,9 @@ class Answer(models.Model):
     date = models.DateField()
 
 
-# Question (title,user,date)
+# Question (title,user,answers,date)
 class Question(models.Model):
     user = models.ForeignKey(User)
     title = models.CharField(max_length=20, unique=True)
     content = models.CharField(max_length=200)
     date = models.DateField()
-
