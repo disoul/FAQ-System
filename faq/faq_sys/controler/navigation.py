@@ -1,21 +1,20 @@
-from django.template.loader import get_template
+__author__ = 'yuwei'
+
 from django.shortcuts import render_to_response
 from django.http import HttpResponse, Http404
 
-
 from faq.faq_sys.controler.utils.page import response_home_page, return_to_home
-from faq.faq_sys.controler.utils.sign import verify_sign_in, save_user, record_sign_status, is_legal_sign_up
+from faq.faq_sys.controler.utils.sign import *
+from faq.faq_sys.model.save import save_user, save_question
 
-
-def home(request):
-    homepage = get_template('home.html')
-    return HttpResponse(homepage.render())
+def ask(request):
+    if request.method == 'POST' and is_sign_in(request):
+        save_question(request)
+    else:
+        raise Http404('Only POSTs are allowed')
 
 
 def sign_up(request):
-    return render_to_response("sign_up.html")
-
-def sign_up_form(request):
     if request.method != 'POST':
         raise Http404('Only POSTs are allowed')
     elif not is_legal_sign_up(request):
@@ -27,9 +26,6 @@ def sign_up_form(request):
 
 
 def sign_in(request):
-    return render_to_response("sign_in.html")
-
-def sign_in_form(request):
     if request.method == 'POST':
         if verify_sign_in(request):
             return response_home_page(request)
@@ -39,3 +35,9 @@ def sign_in_form(request):
         return render_to_response("verify_sign_in.html")
 
 
+def sign_out(request):
+    if request.session.get('is_sign_in'):
+        delete_sign_in_session(request)
+        return HttpResponse("退出成功," + return_to_home)
+    else:
+        raise Http404('wrong url')

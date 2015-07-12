@@ -2,7 +2,6 @@ __author__ = 'yuwei'
 
 from django.shortcuts import render_to_response
 from django.template import Context
-from django.shortcuts import render
 
 
 return_to_home = "<a href='home'>点击回到首页</a>"
