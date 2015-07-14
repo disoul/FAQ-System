@@ -19,7 +19,7 @@
 				<div class="ask"><p>Ask!</p></div>
 			</div>
 			<div class="user">
-				<div class="sign"><p>Sign in</p></div>
+				<div class="sign-up"><p>Sign up</p></div>
 				<div class="icon"></div>
 			</div>
 		</div>
@@ -27,6 +27,7 @@
 		<div class="main-content"></div>
 		{% endblock %}
 	</div>
+	<div class="dialog-bg">
 	<div class="dialog" id="sign">
 		<div class="title">
 			<p>注册</p>
@@ -34,28 +35,29 @@
 				<i class="fa fa-times"></i>
 			</div>
 		</div>
-		<div class="joinus">
-			<p>JOIN US!</p>
-		</div> 
-		<div class="content">
-			<form action="">
-				<div class="nameinput">
-					<input type="text" placeholder=" 姓名" name="name"></input>
-				</div>
-				<div class="emailinput">
-					<input type="email" placeholder=" 电子邮箱" name="email"></input>
-				</div>
-				<div class="passwordinput">
-					<input type="password" placeholder=" 密码" name="password"></input>
-				</div>
-				<div class="againpw">
-					<input type="password" placeholder=" 确认密码" name="againpw"></input>
-				</div>
-			</form>
-		</div>
-		<div class="control">
-			<div class="yes"><i class="fa fa-check"></i></div>
-			<div class="no"><i class="fa fa-times"></i></div>
+			<div class="joinus">
+				<p>JOIN US!</p>
+			</div> 
+			<div class="content">
+				<form class ="signup-form" action="/sign_in_form" method="POST">
+					<div class="nameinput">
+						<input type="text" placeholder=" 姓名" name="name" required="required" id="name"></input>
+					</div>
+					<div class="emailinput">
+						<input type="email" placeholder=" 电子邮箱" name="email" required="required" id="email"></input>
+					</div>
+					<div class="passwordinput">
+						<input type="password" placeholder=" 密码" name="password" required="required" id="password"></input>
+					</div>
+					<div class="againpw">
+						<input type="password" placeholder=" 确认密码" name="againpw" required="required" id="pw2"></input>
+					</div>
+				</form>
+			</div>
+			<div class="control">
+				<div class="yes"><i class="fa fa-check"></i></div>
+				<div class="no"><i class="fa fa-times"></i></div>
+			</div>
 		</div>
 	</div>
 	<div class="footer"></div>
