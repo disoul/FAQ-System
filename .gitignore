@@ -62,4 +62,4 @@ docs/_build/
 target/
 
 # Database
-*.sqlite3
+#TODO *.sqlite3
