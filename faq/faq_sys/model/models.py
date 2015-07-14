@@ -1,7 +1,6 @@
 from django.db import models
 
 
-
 # User (name, email,password)
 class User(models.Model):
     name = models.CharField(max_length=20, unique=True)
@@ -21,7 +20,8 @@ class Question(models.Model):
     user = models.ForeignKey(User)
     title = models.CharField(max_length=20, unique=True)
     content = models.CharField(max_length=10000)
-    date = models.DateField(auto_now=True)
+    time = models.TimeField(auto_now_add=True)
+    date = models.DateField(auto_now_add=True)
 
     def __str__(self):
         return """
@@ -29,7 +29,9 @@ class Question(models.Model):
         title: {}
         content: {}
         date: {}
-        """.format(self.user.name, self.title, self.content, self.date)
+        time: {}
+        """.format(self.user.name, self.title,
+                   self.content, self.date, self.time)
 
 
 # Answer (content,user,date)
@@ -37,6 +39,7 @@ class Answer(models.Model):
     user = models.ForeignKey(User)
     question = models.ForeignKey(Question)
     content = models.CharField(max_length=10000)
+    time = models.TimeField(auto_now=True)
     date = models.DateField(auto_now=True)
 
     def __str__(self):
@@ -45,4 +48,6 @@ class Answer(models.Model):
         question: {}
         content: {}
         date: {}
-        """.format(self.user.name, self.question.title, self.content, self.date)
+        time: {}
+        """.format(self.user.name, self.question.title,
+                   self.content, self.date, self.time)
