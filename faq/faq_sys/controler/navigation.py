@@ -1,22 +1,23 @@
 __author__ = 'yuwei'
 
-from django.shortcuts import render_to_response
 from django.http import HttpResponse, Http404
 
-from faq.faq_sys.controler.utils.page import response_home_page, return_to_home
-from faq.faq_sys.controler.utils.sign import *
-from faq.faq_sys.model.save import save_user, save_question
+from .utils.page import response_home_page, return_to_home
+from .utils.sign import *
+from ..model.save import save_user, save_question
+
+NOT_POST = 'Only POST are allowed'
 
 def ask(request):
     if request.method == 'POST' and is_sign_in(request):
         save_question(request)
     else:
-        raise Http404('Only POSTs are allowed')
+        raise Http404(NOT_POST)
 
 
 def sign_up(request):
     if request.method != 'POST':
-        raise Http404('Only POSTs are allowed')
+        raise Http404(NOT_POST)
     elif not is_legal_sign_up(request):
         return HttpResponse('注册信息有误，已存在的用户名或者邮箱' + return_to_home)
     else:
@@ -32,12 +33,14 @@ def sign_in(request):
         else:
             return HttpResponse('登录信息错误' + return_to_home)
     else:
-        return render_to_response("verify_sign_in.html")
+        return Http404(NOT_POST)
 
 
 def sign_out(request):
+    if request.method != 'POST':
+        raise Http404(NOT_POST)
     if request.session.get('is_sign_in'):
         delete_sign_in_session(request)
-        return HttpResponse("退出成功," + return_to_home)
+        return response_home_page()
     else:
         raise Http404('wrong url')

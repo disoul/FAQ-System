@@ -1,6 +1,6 @@
 __author__ = 'yuwei'
-from faq.faq_sys.model.models import *
-from faq.faq_sys.model.get import get_user
+from .models import *
+
 
 def save_user(request):
     user = User(name=request.POST['name'],
@@ -11,9 +11,15 @@ def save_user(request):
     user.save()
 
 def save_question(request):
-    question = Question(content=request.POST['content'],
-                        date=request.POST['date'],
+    question = Question(title=request.POST['title'],
                         content=request.POST['content'],
-                        user=get_user(request))
+                        user=User.objects.get(email=request.POST['email']))
     print(question.title)
     question.save()
+
+def save_answer(request):
+    answer = Answer(user=User.objects.get(email=request.POST['email']),
+                    qustion=Question.objects.get(id=request.POST['id']),
+                    content=request.POST['content'])
+    print(answer)
+    answer.save()

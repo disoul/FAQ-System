@@ -1,6 +1,6 @@
 __author__ = 'yuwei'
-from faq.faq_sys.model.models import *
-from faq.faq_sys.model.get import get_user
+from ...model.models import *
+
 
 def verify_sign_in(request):
     if is_sign_in_correct(request):
@@ -14,7 +14,7 @@ def verify_sign_in(request):
 def is_sign_in_correct(request):
     print(request.POST['email'])
     try:
-        user = get_user()
+        user = User.objects.get(email=request.POST['email'])
         real_password = user.password
         input_password = request.POST['password']
         return real_password == input_password

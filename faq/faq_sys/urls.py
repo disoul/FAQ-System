@@ -1,5 +1,8 @@
 from django.conf.urls import include,url
-from faq_sys.views import *
+from .controler.views.home_view import *
 
-urlpatterns = [url(r'^$',home),        
+
+urlpatterns = [url(r'^$', home)
 ]
+
+
