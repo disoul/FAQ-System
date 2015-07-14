@@ -6,14 +6,16 @@ from django.template import Context
 
 from ...model.save import save_answer
 from ...model.models import Question, Answer
+from ..utils.sign import get_current_user
 
 # 返回单个question页面
 def question_page(request):
     if request.method == 'GET':
-        question_id = request.GET['question_id']
-        question = Question.objects.get(id=question_id)
+        user = get_current_user()
+        question = Question.objects.get(id=request.GET['question_id'])
         answers = Answer.objects.filter(question=question)
-        return render_to_response('question.html', Context({'question': question, 'answers': answers}))
+        # 注：如果没登陆user为None
+        return render_to_response('question.html', Context({'question': question, 'answers': answers, 'user': user}))
     else:
         return HttpResponseNotAllowed('GET')
 

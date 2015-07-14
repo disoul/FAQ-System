@@ -34,8 +34,15 @@ def is_legal_sign_up(request):
             return False
     return True
 
+
 def is_sign_in(request):
     return request.session.get('is_sign_in')
+
+def get_current_user(request):
+    if is_sign_in(request):
+        return User.objects.get(email=request.session.get('email'))
+    else:
+        return None
 
 
 # 将session里关于sign_in的内容置空
