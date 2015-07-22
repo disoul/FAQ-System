@@ -62,6 +62,12 @@
 			height: 2em;
 			border-bottom: 1px solid $black-12;
 			width: 100%;
+			position: relative;
+			.errMsg{
+				position: absolute;
+				right: 0;
+				font-size: 1em;
+			}
 		}
 		div:nth-child(4) {
 			input {
