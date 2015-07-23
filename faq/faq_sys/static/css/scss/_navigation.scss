@@ -18,7 +18,7 @@ $navi_height: 100px;
 			margin-left: 30px;
 			cursor: pointer;
 			p {
-				font-size: 3em;
+				font-size: 40px;
 				height: $navi_height;
 				line-height: $navi_height;
 				text-align: center;
@@ -35,19 +35,19 @@ $navi_height: 100px;
 
 .user {
 	height: 100%;
-	width: $navi_height+150px;
+	width: 200px;
 	position: absolute;
 	right: 0;
 	margin-right: 30px;
-	.sign-up {
+	.sign {
 		width: 150px;
-		height: $navi_height;
+		height: $navi_height/2;
 		cursor: pointer;
 		p {
 			color: white;
-			font-size: 2em;
-			height: $navi_height;
-			line-height: $navi_height;
+			font-size: 20px;
+			height: $navi_height/2;
+			line-height: $navi_height/2;
 			text-align: center;
 		}
 		&:hover {
@@ -67,5 +67,13 @@ $navi_height: 100px;
 		position: absolute;
 		top: 0;
 		right: 0;
+	}
+}
+
+#sign-out {
+	height: $navi_height;
+	p {
+		height: $navi_height;
+		line-height: $navi_height;
 	}
 }

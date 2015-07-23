@@ -11,7 +11,7 @@ $(document).ready(function(){
 			$(".signup-form").submit();	
 	});
 	
-	$(".sign-up").click(function(){
+	$("#sign-up").click(function(){
 		$(".dialog-bg").fadeIn();		
 	});
 

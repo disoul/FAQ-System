@@ -19,7 +19,12 @@
 				<div class="ask"><p>Ask!</p></div>
 			</div>
 			<div class="user">
-				<div class="sign-up"><p>Sign up</p></div>
+				{% if is_sign_in %}
+				<div id="sign-out" class="sign"><p>登出</p></div>
+				{% else %}
+				<div id="sign-up" class="sign"><p>登录</p></div>
+				<div id="sign-in" class="sign"><p>注册</p></div>
+				{% endif %}
 				<div class="icon"></div>
 			</div>
 		</div>
